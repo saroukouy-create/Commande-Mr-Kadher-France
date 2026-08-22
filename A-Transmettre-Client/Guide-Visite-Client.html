@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Guide de Visite Client</title>
+<style>
+  :root {
+    --ground: #F6F9F6;
+    --surface: #FFFFFF;
+    --surface-sunken: #EEF3EF;
+    --ink: #10201A;
+    --ink-muted: #4B5B53;
+    --border: #D7E2DA;
+    --green: #055C2C;
+    --green-deep: #033D1D;
+    --green-tint: #E4EFE7;
+    --amber: #A85F17;
+    --amber-tint: #FBF0DF;
+    --amber-border: #E4B679;
+    --mono-chip-bg: #EEF3EF;
+    --mono-chip-border: #CBD9CF;
+    --shadow: 0 1px 2px rgba(16, 32, 26, 0.06), 0 6px 20px rgba(16, 32, 26, 0.06);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground: #0C1410;
+      --surface: #121C16;
+      --surface-sunken: #0F1913;
+      --ink: #E8F1EA;
+      --ink-muted: #A9BBAF;
+      --border: #24352B;
+      --green: #33A968;
+      --green-deep: #4FC383;
+      --green-tint: #16261C;
+      --amber: #E3A455;
+      --amber-tint: #241C0E;
+      --amber-border: #5A431F;
+      --mono-chip-bg: #16211A;
+      --mono-chip-border: #2B3D31;
+      --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 10px 30px rgba(0, 0, 0, 0.35);
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --ground: #0C1410;
+    --surface: #121C16;
+    --surface-sunken: #0F1913;
+    --ink: #E8F1EA;
+    --ink-muted: #A9BBAF;
+    --border: #24352B;
+    --green: #33A968;
+    --green-deep: #4FC383;
+    --green-tint: #16261C;
+    --amber: #E3A455;
+    --amber-tint: #241C0E;
+    --amber-border: #5A431F;
+    --mono-chip-bg: #16211A;
+    --mono-chip-border: #2B3D31;
+    --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 10px 30px rgba(0, 0, 0, 0.35);
+  }
+
+  * { box-sizing: border-box; }
+
+  html, body {
+    background: var(--ground);
+  }
+
+  body {
+    color: var(--ink);
+    font-family: -apple-system, "Segoe UI", "Segoe UI Variable", system-ui, sans-serif;
+    font-size: 16px;
+    line-height: 1.55;
+    margin: 0;
+    padding: 0 20px 80px;
+  }
+
+  .wrap {
+    max-width: 760px;
+    margin: 0 auto;
+  }
+
+  h1, h2, h3 {
+    font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+    text-wrap: balance;
+    color: var(--ink);
+  }
+
+  code, .file, .btn-label {
+    font-family: ui-monospace, "Cascadia Code", "Consolas", "SF Mono", monospace;
+  }
+
+  /* ---------- Header band ---------- */
+  .masthead {
+    background: linear-gradient(155deg, var(--green) 0%, var(--green-deep) 100%);
+    margin: 0 0 40px;
+    padding: 44px 20px 40px;
+    color: #FFFFFF;
+  }
+  .masthead-inner {
+    max-width: 760px;
+    margin: 0 auto;
+  }
+  .eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-size: 12.5px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.78);
+    margin: 0 0 10px;
+  }
+  .masthead h1 {
+    color: #FFFFFF;
+    font-size: 34px;
+    line-height: 1.15;
+    margin: 0 0 12px;
+  }
+  .masthead p {
+    color: rgba(255,255,255,0.88);
+    font-size: 16.5px;
+    max-width: 54ch;
+    margin: 0;
+  }
+
+  /* ---------- Tool cards ---------- */
+  .tools {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 14px;
+    margin: 0 0 40px;
+  }
+  .tool-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 18px 18px 20px;
+    box-shadow: var(--shadow);
+  }
+  .tool-card .num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px; height: 24px;
+    border-radius: 50%;
+    background: var(--green-tint);
+    color: var(--green);
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+  .tool-card h3 {
+    font-size: 17px;
+    margin: 0 0 6px;
+  }
+  .tool-card p {
+    font-size: 14px;
+    color: var(--ink-muted);
+    margin: 0 0 12px;
+  }
+  .file {
+    display: inline-block;
+    font-size: 12.5px;
+    background: var(--mono-chip-bg);
+    border: 1px solid var(--mono-chip-border);
+    color: var(--ink);
+    border-radius: 6px;
+    padding: 3px 8px;
+    word-break: break-all;
+  }
+  .badge-ok {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    background: var(--green-tint);
+    color: var(--green-deep);
+    border-radius: 5px;
+    padding: 2px 7px;
+    margin-top: 8px;
+  }
+
+  /* ---------- Section headings ---------- */
+  section { margin-bottom: 42px; }
+  section > h2 {
+    font-size: 22px;
+    margin: 0 0 6px;
+  }
+  section > .sub {
+    color: var(--ink-muted);
+    font-size: 14.5px;
+    margin: 0 0 20px;
+  }
+
+  /* ---------- Callout ---------- */
+  .callout {
+    background: var(--amber-tint);
+    border: 1px solid var(--amber-border);
+    border-left: 4px solid var(--amber);
+    border-radius: 8px;
+    padding: 18px 20px;
+  }
+  .callout .tag {
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 11.5px;
+    font-weight: 700;
+    color: var(--amber);
+    margin: 0 0 8px;
+  }
+  .callout p { margin: 0 0 10px; font-size: 15px; }
+  .callout p:last-child { margin-bottom: 0; }
+
+  /* ---------- Comparison table ---------- */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    font-size: 14.5px;
+    box-shadow: var(--shadow);
+  }
+  .table-scroll { overflow-x: auto; }
+  th, td {
+    text-align: left;
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+  thead th {
+    background: var(--surface-sunken);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--ink-muted);
+    font-weight: 700;
+  }
+  tbody tr:last-child td { border-bottom: none; }
+  td.row-label { font-weight: 600; width: 30%; }
+  td.site { color: var(--ink-muted); }
+  td.excel { color: var(--ink); }
+  .yes { color: var(--green); font-weight: 700; }
+  .no { color: var(--amber); font-weight: 700; }
+
+  /* ---------- Steps ---------- */
+  .steps {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    counter-reset: step;
+  }
+  .step {
+    display: grid;
+    grid-template-columns: 40px 1fr;
+    gap: 16px;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .step:last-child { border-bottom: none; }
+  .step-num {
+    counter-increment: step;
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    background: var(--green);
+    color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    font-family: "Iowan Old Style", Georgia, serif;
+    font-weight: 700;
+    font-size: 15px;
+  }
+  .step-num::before { content: counter(step); }
+  .step h4 {
+    margin: 3px 0 6px;
+    font-size: 16px;
+    font-family: -apple-system, "Segoe UI", sans-serif;
+    font-weight: 600;
+  }
+  .step p { margin: 0; font-size: 14.5px; color: var(--ink-muted); }
+  .btn-chip {
+    display: inline-block;
+    background: var(--green-tint);
+    color: var(--green-deep);
+    border-radius: 5px;
+    padding: 2px 7px;
+    font-size: 12.5px;
+    font-weight: 600;
+  }
+
+  /* ---------- Footnote / practical ---------- */
+  .note {
+    font-size: 14px;
+    color: var(--ink-muted);
+    background: var(--surface-sunken);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px 18px;
+  }
+  .note strong { color: var(--ink); }
+
+  footer {
+    text-align: center;
+    font-size: 12.5px;
+    color: var(--ink-muted);
+    margin-top: 60px;
+  }
+</style>
+</head>
+<body>
+
+<div class="masthead">
+  <div class="masthead-inner">
+    <p class="eyebrow">Expert Comptable &middot; Outils de transition écologique</p>
+    <h1>Guide de visite client</h1>
+    <p>Comment enchaîner les trois classeurs Excel pendant un rendez-vous &mdash; sur PC, mobile ou tablette.</p>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <div class="tools">
+    <div class="tool-card">
+      <span class="num">1</span>
+      <h3>Outil de profilage</h3>
+      <p>Questionnaire client, score et positionnement, calculés en direct.</p>
+      <span class="file">Outil-de-Profilage.xlsx</span>
+      <div class="badge-ok">Fonctionne partout, aucune macro</div>
+    </div>
+    <div class="tool-card">
+      <span class="num">2</span>
+      <h3>Intégrateur de balance</h3>
+      <p>Classification automatique par cycle écologique.</p>
+      <span class="file">Integrateur-de-Balance.xlsm</span>
+      <div class="badge-ok">Un seul bouton nécessite un PC</div>
+    </div>
+    <div class="tool-card">
+      <span class="num">3</span>
+      <h3>Trame de rapport</h3>
+      <p>Indicateurs, préconisations et budget de missions.</p>
+      <span class="file">Trame-de-Rapport.xlsx</span>
+      <div class="badge-ok">Fonctionne partout, aucune macro</div>
+    </div>
+  </div>
+
+  <section>
+    <h2>Le point à connaître avant le rendez-vous</h2>
+    <p class="sub">Ce qui change par rapport au site</p>
+    <div class="callout">
+      <p class="tag">Trois fichiers indépendants</p>
+      <p>Sur le site, les modules se transmettaient les résultats tout seuls via une base commune. Ici, chaque classeur garde ses propres résultats : reportez le profil et le score obtenus dans l'Outil de profilage, ainsi que le résumé de l'Intégrateur de balance, directement dans les champs prévus en haut de la Trame de rapport &mdash; une recopie de quelques chiffres, rien de plus.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Site vs. classeurs Excel</h2>
+    <p class="sub">Ce qui a changé, concrètement</p>
+    <div class="table-scroll">
+    <table>
+      <thead>
+        <tr><th>Fonctionnement</th><th>Sur le site</th><th>Dans les 3 fichiers</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="row-label">Transmission des résultats</td>
+          <td class="site">Automatique, en base de données</td>
+          <td class="excel"><span class="no">Manuelle</span> &mdash; recopier profil/score/résumé</td>
+        </tr>
+        <tr>
+          <td class="row-label">Connexion</td>
+          <td class="site">Identifiants requis</td>
+          <td class="excel"><span class="yes">Aucune</span> &mdash; ouverture directe</td>
+        </tr>
+        <tr>
+          <td class="row-label">Calculs (score, cycles, budget)</td>
+          <td class="site">&mdash;</td>
+          <td class="excel"><span class="yes">Identiques</span> au site, en direct</td>
+        </tr>
+        <tr>
+          <td class="row-label">Fonctionne sur mobile / tablette</td>
+          <td class="site"><span class="yes">Oui</span></td>
+          <td class="excel"><span class="yes">Oui</span> &mdash; sauf le bouton d'import de balance</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+  </section>
+
+  <section>
+    <h2>Le parcours conseillé</h2>
+    <p class="sub">Dans cet ordre, pendant le rendez-vous client</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num"></div>
+        <div>
+          <h4>Profilage</h4>
+          <p>Ouvrir <span class="file">Outil-de-Profilage.xlsx</span> et remplir le questionnaire avec le client. Le score et le profil apparaissent en direct sur l'onglet <span class="btn-chip">Résultats</span> &mdash; pas de bouton à cliquer pour valider.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num"></div>
+        <div>
+          <h4>Balance</h4>
+          <p>Ouvrir <span class="file">Integrateur-de-Balance.xlsm</span>. Sur PC : bouton <span class="btn-chip">Choisir un fichier...</span> pour un import automatique. Sinon : coller directement les comptes dans l'onglet <span class="btn-chip">Données</span> (colonnes Compte/Libellé/Année N-1/Année N) &mdash; la classification par cycle se fait ensuite toute seule, sur l'onglet <span class="btn-chip">Analyse</span>.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num"></div>
+        <div>
+          <h4>Rapport</h4>
+          <p>Ouvrir <span class="file">Trame-de-Rapport.xlsx</span>, recopier le profil/score et le résumé du bilan dans les champs prévus en haut, cocher les indicateurs et choisir <strong>Oui</strong> pour les missions à proposer &mdash; le budget total se calcule automatiquement.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Deux détails pratiques</h2>
+    <div style="display:flex; flex-direction:column; gap:12px;">
+      <div class="note"><strong>Pour un export PDF.</strong> Aucun bouton dédié : utilisez la fonction native d'Excel, <em>Fichier &rarr; Exporter &rarr; Créer un PDF/XPS</em> (disponible sur PC/Mac, pas sur les applications mobiles Excel).</div>
+      <div class="note"><strong>Si Excel affiche un bandeau de sécurité</strong> à l'ouverture du fichier <span class="file">Integrateur-de-Balance.xlsm</span> (le seul des trois avec une macro), cliquez sur <em>Activer le contenu</em> pour utiliser le bouton d'import automatique &mdash; ou ignorez ce bandeau et collez vos données à la main dans l'onglet Données, qui fonctionne sans aucune macro.</div>
+    </div>
+  </section>
+
+</div>
+
+<footer>Expert Comptable &middot; Guide interne &middot; à conserver avec les 3 classeurs</footer>
+
+</body>
+</html>
